@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:insert="fragments.html :: menuFragmnet"></nav>
+<div th:text="${personName}"></div>
+<div th:text="${personSurname}"></div>
+<div th:text="${personAge}"></div>
+<div th:text="${admin}"></div>
+</body>
+</html>

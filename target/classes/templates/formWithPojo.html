@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:insert="fragments.html :: menuFragmnet"></nav>
+<form method="post" th:object="${person}">
+    <input type="text" th:field="*{name}">
+    <input type="text" th:field="*{surname}">
+    <input type="text" th:field="*{age}">
+    <input type="checkbox" th:field="*{admin}">
+
+    <input type="submit" value="OK">
+</form>
+</body>
+</html>
