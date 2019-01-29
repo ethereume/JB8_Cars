@@ -9,7 +9,6 @@ import pl.cars.helpers.ConnectorDb;
 public class Main {
 
     public static void main(String[] args) {
-        SessionFactory factory = ConnectorDb.getConnection();
         SpringApplication.run(Main.class, args);
     }
 }
