@@ -2,7 +2,8 @@ package pl.cars.model;
 
 import javax.persistence.*;
 
-@Entity(name = "car")
+@Entity
+@Table(name = "tCars")
 public  class  ObjectCars implements Cars {
 
     public ObjectCars() {}
@@ -49,12 +50,17 @@ public  class  ObjectCars implements Cars {
                 ", price:" + price +
                 '}';
     }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "CARS_ID")
     private int id;
 
+    @Column(name = "CARS_NAME")
     protected String name;
+
+    @Column(name = "TYPE_OF_CAR")
     protected CarsType typeOfCar;
+
+    @Column(name = "PRICE")
     protected double price;
 }

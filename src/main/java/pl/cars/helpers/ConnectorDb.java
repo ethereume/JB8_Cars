@@ -10,8 +10,7 @@ public class ConnectorDb {
             return DB;
         } else  {
             try{
-                Configuration config = new Configuration();
-                DB = config.configure().buildSessionFactory();
+                DB = new Configuration().configure().buildSessionFactory();
                 System.out.println("Connection do database set !!");
             }catch (Exception e) {
                 System.out.println("Connected cannot by set !!");

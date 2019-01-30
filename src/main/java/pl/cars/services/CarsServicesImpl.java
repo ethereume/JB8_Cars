@@ -34,5 +34,5 @@ public class CarsServicesImpl implements ICarsServices {
     public void updateCar(int id) {
 
     }
-    private SessionFactory factory = ConnectorDb.getConnection();
+    /*private SessionFactory factory = ConnectorDb.getConnection();*/
 }

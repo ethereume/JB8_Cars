@@ -1,5 +1,8 @@
 package pl.cars.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Truck extends ObjectCars {
     public Truck() {}
 
