@@ -15,5 +15,7 @@
         <property name="hibernate.hbm2ddl.auto">create</property>
         <mapping class="pl.cars.model.ObjectCars"></mapping>
         <mapping class="pl.cars.model.Truck"></mapping>
+        <mapping class="pl.cars.model.PersonalCar"></mapping>
+        <mapping class="pl.cars.model.Machin"></mapping>
     </session-factory>
 </hibernate-configuration>

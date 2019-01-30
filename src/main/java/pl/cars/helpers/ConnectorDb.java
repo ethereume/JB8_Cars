@@ -1,5 +1,6 @@
 package pl.cars.helpers;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -11,9 +12,8 @@ public class ConnectorDb {
         } else  {
             try{
                 DB = new Configuration().configure().buildSessionFactory();
-                System.out.println("Connection do database set !!");
+                return DB;
             }catch (Exception e) {
-                System.out.println("Connected cannot by set !!");
                 DB = null;
             }
         }

@@ -2,13 +2,15 @@ package pl.cars.services;
 
 import pl.cars.model.Cars;
 import pl.cars.model.CarsType;
+import pl.cars.model.ObjectCars;
 
 import java.util.List;
 
 public interface ICarsServices {
-    Cars getCars();
-    List<Cars> getCarsList();
-    Cars getSingeCar(int id);
-    Cars getCarsByType(CarsType type);
+    ObjectCars getCars();
+    List<ObjectCars> getCarsList();
+    ObjectCars getSingeCar(int id);
+    List<ObjectCars> getCarsByType(CarsType type);
     void updateCar(int id);
+    void saveCar(ObjectCars c);
 }

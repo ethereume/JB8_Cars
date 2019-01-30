@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "tCars")
-public  class  ObjectCars implements Cars {
+public  abstract class ObjectCars implements Cars {
 
     public ObjectCars() {}
 
