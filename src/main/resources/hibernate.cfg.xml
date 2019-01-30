@@ -13,9 +13,10 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="hibernate.hbm2ddl.auto">create</property>
-        <mapping class="pl.cars.model.ObjectCars"></mapping>
-        <mapping class="pl.cars.model.Truck"></mapping>
-        <mapping class="pl.cars.model.PersonalCar"></mapping>
-        <mapping class="pl.cars.model.Machin"></mapping>
+        <mapping class="pl.cars.model.Cars.ObjectCars"></mapping>
+        <mapping class="pl.cars.model.Cars.Truck"></mapping>
+        <mapping class="pl.cars.model.Cars.PersonalCar"></mapping>
+        <mapping class="pl.cars.model.Cars.Machin"></mapping>
+        <mapping class="pl.cars.model.Users.User"></mapping>
     </session-factory>
 </hibernate-configuration>

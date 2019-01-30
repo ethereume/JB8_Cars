@@ -1,4 +1,4 @@
-package pl.cars.model;
+package pl.cars.model.Cars;
 
 import javax.persistence.*;
 
@@ -42,8 +42,16 @@ public  abstract class ObjectCars implements Cars {
         return price;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
-    public String getFullName() {
+    public String toString() {
         return "{" +
                 "name:'" + name + '\'' +
                 ", typeOfCar:" + typeOfCar +

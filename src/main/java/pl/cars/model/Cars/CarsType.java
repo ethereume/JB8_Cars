@@ -1,4 +1,4 @@
-package pl.cars.model;
+package pl.cars.model.Cars;
 
 public enum CarsType {
     OSOBOWE("Osobowe"),

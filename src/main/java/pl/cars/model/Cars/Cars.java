@@ -1,7 +1,7 @@
-package pl.cars.model;
+package pl.cars.model.Cars;
 
 public interface Cars {
      String getCarsType();
      double getPrice();
-     String getFullName();
+     String toString();
 }
