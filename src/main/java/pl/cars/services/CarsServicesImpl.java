@@ -5,8 +5,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import pl.cars.helpers.ConnectorDb;
-import pl.cars.model.Cars;
 import pl.cars.model.CarsType;
 import pl.cars.model.ObjectCars;
 
@@ -43,14 +41,25 @@ public class CarsServicesImpl implements ICarsServices {
 
     @Override
     public void saveCar(ObjectCars c) {
-            this.doQueryToDb(c);
+            this.doQueryToDb(c,TypeOfQuery.INSERT);
     }
-    private void doQueryToDb(ObjectCars c){
-        SessionFactory sf = ConnectorDb.getConnection();
-        Session s  = sf.openSession();
+
+    private void doQueryToDb(ObjectCars c,TypeOfQuery type){
+        Session s  = dbConnection.openSession();
         Transaction transaction = null;
         try{
             transaction = s.beginTransaction();
+            switch (type){
+                case DELETE:
+                    s.delete(c);
+                    break;
+                case INSERT:
+                    s.save(c);
+                    break;
+                case UPDATE:
+                    s.update(c);
+                    break;
+            }
             s.save(c);
             transaction.commit();
             System.out.println("Make query ");
@@ -61,6 +70,14 @@ public class CarsServicesImpl implements ICarsServices {
         } finally {
             s.close();
         }
+    }
+   /* private ObjectCars getElementById(int id) {
+        Session f = dbConnection.openSession();
+    }*/
+    private enum TypeOfQuery {
+        INSERT,
+        UPDATE,
+        DELETE
     }
 
     @Autowired
