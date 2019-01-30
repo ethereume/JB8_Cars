@@ -22,14 +22,6 @@ public class Main {
     public static void main(String[] args) {
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
-
-       ICarsServices carsServices = context.getBean(CarsServicesImpl.class);
-
-        /*ObjectCars cars = new PersonalCar("Opel Corsa",CarsType.KOMBI,2500);
-        ObjectCars cars2 = new PersonalCar("Opel Mondeo",CarsType.KOMBI,5500);
-        carsServices.saveCar(cars);
-        carsServices.saveCar(cars2);*/
-        /*SiteController controller = context.getBean(SiteController.class);*/
         SpringApplication.run(Main.class, args);
     }
 }

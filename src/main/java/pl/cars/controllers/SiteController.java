@@ -8,6 +8,9 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.cars.model.CarsType;
+import pl.cars.model.ObjectCars;
+import pl.cars.model.PersonalCar;
 import pl.cars.services.CarsServicesImpl;
 import pl.cars.services.ICarsServices;
 
@@ -20,11 +23,12 @@ public class SiteController {
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public String index(){
-
+        ObjectCars b = new PersonalCar("Opel Zefira", CarsType.SEDAN,4532);
+        carsServices.saveCar(b);
         return "Hello World";
     }
 
-  /*  @Autowired
-    private CarsServicesImpl carsServices;*/
+    @Autowired
+    private ICarsServices carsServices;
 
 }

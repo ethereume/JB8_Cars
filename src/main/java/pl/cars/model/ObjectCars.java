@@ -6,9 +6,9 @@ import javax.persistence.*;
 @Table(name = "tCars")
 public  abstract class ObjectCars implements Cars {
 
-    public ObjectCars() {}
+    protected ObjectCars() {}
 
-    public ObjectCars(String name, CarsType typeOfCar, double price) {
+    protected ObjectCars(String name, CarsType typeOfCar, double price) {
         this.name = name;
         this.typeOfCar = typeOfCar;
         this.price = price;

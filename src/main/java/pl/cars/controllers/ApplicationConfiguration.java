@@ -17,8 +17,4 @@ public class ApplicationConfiguration {
     public SessionFactory getDbConnection(){
         return ConnectorDb.getConnection();
     }
-    /*@Bean
-    public CarsServicesImpl getCarsServices(){
-        return new CarsServicesImpl();
-    }*/
 }
