@@ -40,6 +40,14 @@ public class User {
         isAdmin = admin;
     }
 
+    public boolean isLogged() {
+        return logged;
+    }
+
+    public void setLogged(boolean logged) {
+        this.logged = logged;
+    }
+
     @Override
     public String toString() {
         return "{" +
@@ -62,4 +70,6 @@ public class User {
     private Date addDate;
     @Column(name = "IS_ADMIN")
     private boolean isAdmin;
+    @Column(name = "LOGGED")
+    private boolean logged;
 }

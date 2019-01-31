@@ -7,7 +7,7 @@ import pl.cars.model.Cars.CarsType;
 import pl.cars.model.Cars.ObjectCars;
 import pl.cars.model.Cars.PersonalCar;
 import pl.cars.services.ICarsServices;
-
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @Controller
 @RequestMapping("api/cars")
 public class CarsController {
