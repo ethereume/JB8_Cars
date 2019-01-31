@@ -16,12 +16,12 @@ public class User {
         this.name = name;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Date getAddDate() {
@@ -44,6 +44,10 @@ public class User {
         return logged;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public void setLogged(boolean logged) {
         this.logged = logged;
     }
@@ -52,7 +56,7 @@ public class User {
     public String toString() {
         return "{" +
                 "name:'" + name + '\'' +
-                ", surname:'" + surname + '\'' +
+                ", password:'" + password + '\'' +
                 ", addDate:" + addDate +
                 ", isAdmin:" + isAdmin +
                 '}';
@@ -64,8 +68,8 @@ public class User {
 
     @Column(name = "NAME")
     private String name;
-    @Column(name = "SURNAME")
-    private String surname;
+    @Column(name = "PASSWORD")
+    private String password;
     @Column(name = "DATE_ADD")
     private Date addDate;
     @Column(name = "IS_ADMIN")
