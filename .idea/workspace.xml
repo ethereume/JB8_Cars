@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="aa57b431-309d-4a4b-930d-ac1de398ac14" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/cars/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/cars/controllers/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/cars/services/IJsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/cars/services/IJsonParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/cars/services/JsonaParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/cars/services/JsonaParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/cars/services/UserServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/cars/services/UserServicesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pl/cars/controllers/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/cars/controllers/AdminController.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -269,7 +263,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548940143469" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548943368966" />
     <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/Cars" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -335,15 +329,15 @@
       <option name="presentableId" value="Default" />
       <updated>1548786350630</updated>
       <workItem from="1548786353183" duration="2581000" />
-      <workItem from="1548788984826" duration="31132000" />
+      <workItem from="1548788984826" duration="31305000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33713000" />
+    <option name="totallyTimeSpent" value="33886000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Persistence" side_tool="true" />
