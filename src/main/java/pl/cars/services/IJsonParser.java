@@ -5,4 +5,5 @@ import pl.cars.model.Users.User;
 public interface IJsonParser {
     String generateErrorObject(String error);
     String generateOkObject(String message, User u);
+    User parseUser(String obje);
 }

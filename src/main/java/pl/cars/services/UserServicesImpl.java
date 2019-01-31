@@ -19,10 +19,11 @@ public class UserServicesImpl implements IUserServices {
         User tmp = null;
         try {
             Criteria m = s.createCriteria(User.class);
-            m.add(Restrictions.eq("NAME",name));
-            m.add(Restrictions.eq("PASSWORD",password));
+            m.add(Restrictions.eq("name",name));
+            m.add(Restrictions.eq("password",password));
             tmp = (User) m.uniqueResult();
             t.commit();
+            return tmp;
         }catch (Exception e) {
             if(s != null) t.rollback();
         }finally {
