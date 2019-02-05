@@ -7,6 +7,11 @@ import pl.cars.model.Cars.CarsType;
 import pl.cars.model.Cars.ObjectCars;
 import pl.cars.model.Cars.PersonalCar;
 import pl.cars.services.ICarsServices;
+import pl.cars.services.IJsonParser;
+
+import java.util.ArrayList;
+import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @Controller
 @RequestMapping("api/cars")
@@ -15,11 +20,20 @@ public class CarsController {
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public String index(){
-        ObjectCars b = new PersonalCar("Opel Zefira", CarsType.SEDAN,4532);
+        ObjectCars a = new PersonalCar("Opel Zefira", CarsType.SEDAN,4532);
         ObjectCars c = new PersonalCar("Opel Corsa", CarsType.KABRIO,3243);
-        carsServices.saveCar(b);
-        carsServices.saveCar(c);
-        return "Add object "+b.toString();
+        ObjectCars d = new PersonalCar("BMW", CarsType.KABRIO,3243);
+        ObjectCars e = new PersonalCar("Nissan Micra", CarsType.KABRIO,3243);
+        ObjectCars f = new PersonalCar("Grand Virata", CarsType.KABRIO,3243);
+        ObjectCars g = new PersonalCar("Suzuki Jimmy", CarsType.KABRIO,3243);
+        List lista = new ArrayList();
+        lista.add(a);
+        lista.add(c);
+        lista.add(d);
+        lista.add(e);
+        lista.add(f);
+        lista.add(g);
+        return jsonparser.generateCarsList("Cars",lista);
     }
     @RequestMapping(value = "/cars/{id}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
@@ -39,5 +53,7 @@ public class CarsController {
     }
     @Autowired
     private ICarsServices carsServices;
+    @Autowired
+    private IJsonParser jsonparser;
 
 }
