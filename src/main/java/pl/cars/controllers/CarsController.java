@@ -35,24 +35,37 @@ public class CarsController {
         lista.add(g);
         return jsonparser.generateCarsList("Cars",lista);
     }
-    @RequestMapping(value = "/cars/{id}", method = RequestMethod.GET, produces = "application/json")
+
+    @RequestMapping(value = "/types",method = RequestMethod.GET,produces = "application/json")
+    @ResponseBody
+    public String getTypesOfCar(){
+        return jsonparser.generateTypeOfCar("Types",CarsType.getListOfCar());
+    }
+
+
+    @RequestMapping(value = "/cars/{id}", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public String indexUpdate(@PathVariable("id") int id){
         carsServices.updateCar(id);
         return "Update car "+id;
     }
+
     @RequestMapping(value = "/car/{id}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public String indexGetOneCar(@PathVariable("id") int id){
         return "Get car "+carsServices.getSingeCar(id).toString();
     }
+
     @RequestMapping(value = "/allCars", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public String indexGetOneCar(){
         return "CarsList "+carsServices.getCarsList().toString();
     }
+
+
     @Autowired
     private ICarsServices carsServices;
+
     @Autowired
     private IJsonParser jsonparser;
 

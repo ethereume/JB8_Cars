@@ -60,6 +60,11 @@ public class JsonaParser implements IJsonParser{
     }
 
     @Override
+    public String generateTypeOfCar(String message, List<String> c) {
+        return jsonString.put("correct",message).put("type",c.toString()).toString();
+    }
+
+    @Override
     public User parseUser(String u) {
         Gson g = new Gson();
         User p = g.fromJson(u, User.class);

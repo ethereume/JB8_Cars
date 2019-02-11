@@ -14,4 +14,5 @@ public interface IJsonParser {
     String generateErrorObjectForCar(String error);
     String generateOkObjectForCar(String message, ObjectCars c);
     String generateCarsList(String message, List<ObjectCars> c);
+    String generateTypeOfCar(String message,List<String> c);
 }
