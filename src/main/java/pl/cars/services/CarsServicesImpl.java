@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import pl.cars.model.Cars.CarsType;
 import pl.cars.model.Cars.ObjectCars;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class CarsServicesImpl implements ICarsServices {
@@ -15,8 +17,10 @@ public class CarsServicesImpl implements ICarsServices {
 
     @Override
     public void delete(int id) {
-        ObjectCars cars = this.getElementById(id);
-        this.doQueryToDb(cars,TypeOfQuery.DELETE);
+        Optional<ObjectCars> cars = this.getElementById(id);
+        if(cars.isPresent()){
+            this.doQueryToDb(cars.get(),TypeOfQuery.DELETE);
+        }
     }
 
     @Override
@@ -39,7 +43,7 @@ public class CarsServicesImpl implements ICarsServices {
 
     @Override
     public ObjectCars getSingeCar(int id) {
-        return this.getElementById(id);
+        return this.getElementById(id).get();
     }
 
     @Override
@@ -49,15 +53,26 @@ public class CarsServicesImpl implements ICarsServices {
 
     @Override
     public void updateCar(int id) {
-        ObjectCars cars = this.getElementById(id);
-        cars.setId(id);
-        cars.setName("Dudus");
-        this.doQueryToDb(cars,TypeOfQuery.UPDATE);
+        Optional<ObjectCars> cars = this.getElementById(id);
+        if(cars.isPresent()){
+            cars.get().setId(id);
+            cars.get().setName("Dudus");
+            this.doQueryToDb(cars.get(),TypeOfQuery.UPDATE);
+        }
     }
 
     @Override
     public void saveCar(ObjectCars c) {
             this.doQueryToDb(c,TypeOfQuery.INSERT);
+    }
+
+    @Override
+    public void updateDataCar(int id, Date data) {
+        Optional<ObjectCars> cars = getElementById(id);
+        if(cars.isPresent()){
+            cars.get().setData(data);
+            doQueryToDb(cars.get(),TypeOfQuery.UPDATE);
+        }
     }
 
     private void doQueryToDb(ObjectCars c,TypeOfQuery type){
@@ -86,16 +101,15 @@ public class CarsServicesImpl implements ICarsServices {
             s.close();
         }
     }
-    private ObjectCars getElementById(int id) {
+    private Optional<ObjectCars> getElementById(int id) {
         Session s = dbConnection.openSession();
         Transaction t = s.beginTransaction();
         try {
 
              ObjectCars cars = (ObjectCars) s.get(ObjectCars.class, id);
-
+            Optional<ObjectCars> tmp = new Optional<>(cars);
             t.commit();
-
-            return  cars;
+            return tmp;
         }catch (Exception e) {
             if (t != null) t.rollback();
         } finally {

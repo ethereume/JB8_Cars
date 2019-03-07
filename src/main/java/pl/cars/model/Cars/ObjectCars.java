@@ -1,6 +1,7 @@
 package pl.cars.model.Cars;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "tCars")
@@ -8,10 +9,11 @@ public  abstract class ObjectCars implements Cars {
 
     protected ObjectCars() {}
 
-    protected ObjectCars(String name, CarsType typeOfCar, double price) {
+    protected ObjectCars(String name, CarsType typeOfCar, double price, Date data) {
         this.name = name;
         this.typeOfCar = typeOfCar;
         this.price = price;
+        this.data = data;
     }
 
     public String getName() {
@@ -50,25 +52,38 @@ public  abstract class ObjectCars implements Cars {
         this.id = id;
     }
 
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
     @Override
     public String toString() {
-        return "{" +
-                "name:'" + name + '\'' +
-                ", typeOfCar:" + typeOfCar +
-                ", price:" + price +
+        return "ObjectCars{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", typeOfCar=" + typeOfCar +
+                ", price=" + price +
+                ", data=" + data +
                 '}';
     }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CARS_ID")
+    @Column(name = "id")
     private int id;
 
-    @Column(name = "CARS_NAME")
+    @Column(name = "carsName")
     protected String name;
 
-    @Column(name = "TYPE_OF_CAR")
+    @Column(name = "typeOfCar")
     protected CarsType typeOfCar;
 
-    @Column(name = "PRICE")
+    @Column(name = "price")
     protected double price;
+    @Column(name = "DateOfRend")
+    protected Date  data;
 }
