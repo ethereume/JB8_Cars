@@ -106,8 +106,8 @@ public class CarsServicesImpl implements ICarsServices {
         Transaction t = s.beginTransaction();
         try {
 
-             ObjectCars cars = (ObjectCars) s.get(ObjectCars.class, id);
-            Optional<ObjectCars> tmp = new Optional<>(cars);
+            ObjectCars cars = (ObjectCars) s.get(ObjectCars.class, id);
+            Optional<ObjectCars> tmp = Optional.of(cars);
             t.commit();
             return tmp;
         }catch (Exception e) {

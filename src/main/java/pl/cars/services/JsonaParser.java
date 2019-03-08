@@ -11,6 +11,7 @@ import pl.cars.model.Users.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class JsonaParser implements IJsonParser{
 
@@ -51,10 +52,26 @@ public class JsonaParser implements IJsonParser{
     public String generateCarsList(String message, List<ObjectCars> c) {
         List tmptab =  new ArrayList();
         for (int i = 0; i < c.size(); i++) {
+            boolean data = false;
+            Optional<String> opt;
+            try {
+                opt = Optional.ofNullable(c.get(i).getData().toString());
+                if(opt.isPresent()){
+                    System.out.println("Jest");
+                    data = true;
+                } else {
+                    System.out.println("Nie jest");
+                    data = false;
+                }
+            }catch (NullPointerException e){
+                data = false;
+            }
+
             tmptab.add(new JSONObject()
                     .put("name",c.get(i).getName())
                     .put("type",c.get(i).getTypeOfCar())
-                    .put("price",c.get(i).getPrice()).toString());
+                    .put("price",c.get(i).getPrice())
+                    .put("isRent",data).toString());
         }
         return jsonString.put("correct",message).put("cars",tmptab.toString()).toString();
     }
