@@ -62,7 +62,7 @@ public  abstract class ObjectCars implements Cars {
 
     @Override
     public String toString() {
-        return "ObjectCars{" +
+        return "{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", typeOfCar=" + typeOfCar +

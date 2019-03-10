@@ -16,41 +16,42 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-/*@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)*/
-@CrossOrigin
-@Controller
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@RestController
 @RequestMapping("api/cars")
 public class CarsController {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
-    @ResponseBody
-    public String index(){
-        List<ObjectCars> lista = this.carsServices.getCarsList();
-        return jsonparser.generateCarsList("Cars",lista);
+    private ICarsServices carsServices;
+    private IJsonParser jsonparser;
+
+    public CarsController(ICarsServices carsServices, IJsonParser jsonparser) {
+        this.carsServices = carsServices;
+        this.jsonparser = jsonparser;
     }
 
-    @RequestMapping(value = "/types",method = RequestMethod.GET,produces = "application/json")
-    @ResponseBody
+    @GetMapping("/")
+    public String index(){
+        List<ObjectCars> lista = this.carsServices.getCarsList();
+        Gson gson = new Gson();
+        return gson.toJson(lista);
+    }
+    @GetMapping("/types")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public String getTypesOfCar(){
         return jsonparser.generateTypeOfCar("Types",CarsType.getListOfCar());
     }
 
-
-    @RequestMapping(value = "/cars/{id}", method = RequestMethod.POST, produces = "application/json")
-    @ResponseBody
-    public String indexUpdate(@PathVariable("id") int id){
+    @PutMapping("/car/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void indexUpdate(@PathVariable("id") int id){
         carsServices.updateCar(id);
-        return "Update car "+id;
     }
 
-    @RequestMapping(value = "/car/{id}", method = RequestMethod.GET, produces = "application/json")
-    @ResponseBody
-    public String indexGetOneCar(@PathVariable("id") int id){
-        return "Get car "+carsServices.getSingeCar(id).toString();
-    }
-    @PostMapping("/data/{id}")
+    @PutMapping("/data/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void updateCarRend(@PathVariable("id") int id, @RequestBody String data) throws ParseException {
+        System.out.println(id);
+        System.out.println(data);
         JSONObject obj = new JSONObject(data);
         String pageName = obj.getString("data");
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
@@ -58,17 +59,24 @@ public class CarsController {
         this.carsServices.updateDataCar(id,d);
     }
 
+    @PostMapping("/car/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public ObjectCars getCar(@PathVariable int id){
+        ObjectCars cars = this.carsServices.getSingeCar(id);
+        return cars;
+    }
+
     @PostMapping("/")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void addCar(@RequestBody PersonalCar car){
+        System.out.println(car);
         this.carsServices.saveCar(car);
     }
-
-
-    @Autowired
-    private ICarsServices carsServices;
-
-    @Autowired
-    private IJsonParser jsonparser;
-
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public String deletaCar(@PathVariable int id){
+        this.carsServices.delete(id);
+        Gson gson = new Gson();
+        return gson.toJson("Usunieto");
+    }
 }
